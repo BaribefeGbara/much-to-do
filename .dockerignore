@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+README.md
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+*_test.go
+**/*_test.go
+
+# Evidence and screenshots
+evidence/
+
+# Scripts
+scripts/
+
+# Kubernetes configs
+kubernetes/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Logs
+*.log
+
+# Env files (we'll pass via docker-compose)
+.env
+.env.*

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Create .env file from environment variables
+cat > /app/.env << ENVFILE
+PORT=${PORT}
+MONGO_URI=${MONGO_URI}
+DB_NAME=${DB_NAME}
+JWT_SECRET_KEY=${JWT_SECRET_KEY}
+JWT_EXPIRATION_HOURS=${JWT_EXPIRATION_HOURS}
+ENABLE_CACHE=${ENABLE_CACHE}
+REDIS_ADDR=${REDIS_ADDR}
+REDIS_PASSWORD=${REDIS_PASSWORD}
+LOG_LEVEL=${LOG_LEVEL}
+LOG_FORMAT=${LOG_FORMAT}
+ENVFILE
+
+# Run the application
+exec ./muchtodo
