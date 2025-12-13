@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Production-ready containerization and Kubernetes deployment of MuchToDo Golang backend API with MongoDB and Redis caching.
+This project demonstrates production-ready containerization and orchestration of the MuchToDo backend application - a Golang REST API with MongoDB database and Redis caching layer. The implementation follows DevOps best practices for both local development (Docker Compose) and production deployment (Kubernetes).
 
 **Assessment:** AltSchool Africa Month 2 - DevOps Engineering  
 **Student:** Baribefe Gbara  
