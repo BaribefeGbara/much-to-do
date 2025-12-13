@@ -16,8 +16,7 @@ ENV GOTOOLCHAIN=auto
 COPY Server/MuchToDo/go.mod Server/MuchToDo/go.sum ./
 
 # Download dependencies with retries
-RUN --mount=type=cache,target=/go/pkg/mod \
-    go mod download || \
+RUN go mod download || \
     (sleep 5 && go mod download) || \
     (sleep 10 && go mod download)
 
@@ -25,9 +24,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 COPY Server/MuchToDo/ ./
 
 # Build the application
-RUN --mount=type=cache,target=/go/pkg/mod \
-    --mount=type=cache,target=/root/.cache/go-build \
-    CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/muchtodo ./cmd/api/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/muchtodo ./cmd/api/main.go
 
 # Copy entrypoint script to /app
 COPY Server/MuchToDo/entrypoint.sh /app/entrypoint.sh
