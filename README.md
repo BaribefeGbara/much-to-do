@@ -6,7 +6,7 @@ Production-ready containerization and Kubernetes deployment of MuchToDo Golang b
 
 **Assessment:** AltSchool Africa Month 2 - DevOps Engineering  
 **Student:** Baribefe Gbara  
-**Date:** December 2024
+**Date:** December 2025
 
 ## Architecture
 
@@ -359,5 +359,5 @@ GitHub: https://github.com/BaribefeGbara
 ## Project Status
 
 Status: Complete  
-Last Updated: December 2024  
+Last Updated: December 2025 
 Version: 1.0.0
