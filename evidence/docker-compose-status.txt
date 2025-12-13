@@ -1,5 +1,0 @@
-      Name                    Command                  State                          Ports                    
----------------------------------------------------------------------------------------------------------------
-muchtodo-backend   ./entrypoint.sh                  Up (healthy)   0.0.0.0:8080->8080/tcp,:::8080->8080/tcp    
-muchtodo-mongodb   docker-entrypoint.sh mongod      Up (healthy)   0.0.0.0:27017->27017/tcp,:::27017->27017/tcp
-muchtodo-redis     docker-entrypoint.sh redis ...   Up (healthy)   0.0.0.0:6379->6379/tcp,:::6379->6379/tcp    
