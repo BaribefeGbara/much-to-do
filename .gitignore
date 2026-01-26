@@ -36,3 +36,5 @@ docker-compose.test.yaml
 mongodb.key
 mongo-keyfile
 
+*.tar.gz
+*.tar
