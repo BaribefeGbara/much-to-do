@@ -1,0 +1,45 @@
+name: Deploy Backend to EC2
+
+on:
+  push:
+    branches:
+      - main
+      - feature/full-stack
+    paths:
+      - 'Server/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Build Docker image
+        working-directory: ./Server
+        run: |
+          docker build -t starttech-backend:${{ github.sha }} .
+          docker tag starttech-backend:${{ github.sha }} starttech-backend:latest
+
+      - name: Save Docker image as tar
+        run: |
+          docker save starttech-backend:latest -o backend.tar
+          gzip backend.tar
+
+      - name: Upload to S3 for EC2 instances
+        run: |
+          aws s3 cp backend.tar.gz s3://${{ secrets.S3_BUCKET_NAME }}/docker-images/backend.tar.gz
+
+      - name: Deploy notification
+        run: |
+          echo "Backend Docker image uploaded to S3"
+          echo "Manual deployment to EC2 required for first time"
